@@ -55,23 +55,20 @@ The console prints each major step and either success or the raw response body u
 - The sample disables TLS certificate validation for local development; remove or harden for any non-local usage.
 - Consider switching to Client Credentials or Authorization Code flows for production scenarios.
 
-## Making a Public GitHub Repository
-1. Create an empty public repository on GitHub (no README/license yet) e.g. `playlist-publish-demo`.
-2. Initialize and push:
+## GitHub Repository
+This project is available on GitHub at: **https://github.com/cangunaydin/Adzup.Demo**
 
+To clone this repository:
 ```bash
-cd export/PlaylistPublishDemoPublic
-git init
-git add .
-git commit -m "Initial public playlist publish demo"
-git branch -M main
-git remote add origin git@github.com:<your-org-or-user>/playlist-publish-demo.git
-git push -u origin main
+git clone https://github.com/cangunaydin/Adzup.Demo.git
+cd Adzup.Demo
 ```
 
-If using HTTPS remote:
+To contribute or make changes:
 ```bash
-git remote add origin https://github.com/<your-org-or-user>/playlist-publish-demo.git
+git add .
+git commit -m "Your commit message"
+git push
 ```
 
 ## Next Ideas
