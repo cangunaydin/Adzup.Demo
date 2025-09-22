@@ -29,15 +29,27 @@ Configuration is via environment variables (all have defaults):
 | DEMO_USERNAME | admin@abp.io | User for password grant |
 | DEMO_PASSWORD | 123456 | Password (DO NOT use production secrets) |
 | DEMO_CLIENT_ID | Adzup_App | OAuth2 client id configured on Auth Server |
-| DEMO_AUTH_BASE | https://localhost:44332 | Auth server base URL |
-| DEMO_API_BASE | https://localhost:44389 | Main monolith API base URL |
-| DEMO_POP_BASE | https://localhost:7038 | POP Management API base URL |
+| DEMO_AUTH_BASE | https://localhost:44332 | Auth server base URL (Production: https://authserver.adzup.net/) |
+| DEMO_API_BASE | https://localhost:44389 | Main monolith API base URL (Production: https://api.adzup.net/) |
+| DEMO_POP_BASE | https://localhost:7038 | POP Management API base URL (Production: https://popmanagement-api.adzup.net/) |
 
 You can override any of these at runtime:
 
 ```bash
 export DEMO_USERNAME=myuser@tenant.com
 export DEMO_PASSWORD='ChangeMe!'
+```
+
+### Using Live Environment
+To use the live Adzup environment instead of localhost, set these environment variables:
+
+```bash
+export DEMO_AUTH_BASE=https://authserver.adzup.net/
+export DEMO_API_BASE=https://api.adzup.net/
+export DEMO_POP_BASE=https://popmanagement-api.adzup.net/
+export DEMO_USERNAME=your-live-username@yourtenant.com
+export DEMO_PASSWORD='your-live-password'
+export DEMO_TENANT=your-tenant-name
 ```
 
 ## Running

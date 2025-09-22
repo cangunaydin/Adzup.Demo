@@ -26,7 +26,7 @@ internal static class Program
     {
         var tenant = Env("DEMO_TENANT", "test");
         var username = Env("DEMO_USERNAME", "admin@abp.io");
-        var password = Env("DEMO_PASSWORD", "User1029#");
+        var password = Env("DEMO_PASSWORD", "123456");
         var clientId = Env("DEMO_CLIENT_ID", "Adzup_App");
         var authBase = Env("DEMO_AUTH_BASE", "https://localhost:44332");
         var apiBase = Env("DEMO_API_BASE", "https://localhost:44389");
