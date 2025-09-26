@@ -25,12 +25,12 @@ internal static class Program
     private static async Task<int> Main()
     {
         var tenant = Env("DEMO_TENANT", "test");
-        var username = Env("DEMO_USERNAME", "admin@abp.io");
-        var password = Env("DEMO_PASSWORD", "123456");
+        var username = Env("DEMO_USERNAME", "kevin");
+        var password = Env("DEMO_PASSWORD", "Kevin123#");
         var clientId = Env("DEMO_CLIENT_ID", "Adzup_App");
-        var authBase = Env("DEMO_AUTH_BASE", "https://localhost:44332");
-        var apiBase = Env("DEMO_API_BASE", "https://localhost:44389");
-        var popBase = Env("DEMO_POP_BASE", "https://localhost:7038");
+        var authBase = Env("DEMO_AUTH_BASE", "https://authserver.adzup.net");
+        var apiBase = Env("DEMO_API_BASE", "https://api.adzup.net");
+        var popBase = Env("DEMO_POP_BASE", "https://popmanagement-api.adzup.net");
 
         Console.WriteLine("--- Public Playlist Publish Demo ---\n");
         var imagePath = Environment.GetCommandLineArgs().Skip(1).FirstOrDefault() ?? "sample.jpg";
@@ -58,8 +58,10 @@ internal static class Program
             ["client_id"] = clientId,
             ["scope"] = "offline_access openid profile email roles Adzup PopManagement"
         });
-        form.Headers.Add("__tenant", tenant);
-        var tokenResp = await authClient.PostAsync("connect/token", form);
+        form.Headers.Add("__tenant", tenant); // header form still added for compatibility
+        // Also append __tenant as a query string parameter per request
+        var tokenEndpoint = $"connect/token?__tenant={Uri.EscapeDataString(tenant)}";
+        var tokenResp = await authClient.PostAsync(tokenEndpoint, form);
         if(!tokenResp.IsSuccessStatusCode)
         {
             Console.WriteLine("Token request failed: " + (int)tokenResp.StatusCode);
